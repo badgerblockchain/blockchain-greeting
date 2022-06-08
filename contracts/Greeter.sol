@@ -19,4 +19,11 @@ contract Greeter {
         console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
         greeting = _greeting;
     }
+    fallback() external payable{
+
+    }
+
+    receive() external payable{
+
+    }
 }
