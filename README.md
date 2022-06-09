@@ -77,7 +77,7 @@ Congratulations! Your first web3 site is active!
 
 The starting logic for the code is found /frontend/src/App.js starting with the return function. Start to debug here. I will continue to add documentation as I learn more. Any suggestions? I am here for them.
 
-- **NONCE ERROR??** Try resetting your Metamask account. (Majorirty of errors I run into disappear after resetting)
+- **NONCE ERROR??** Try resetting your Metamask account. The error occurs because your transaction is stuck on pending. Ethereum is built to wait for your transaction to be mined to prevent mailicious activity. Resetting your Metamask account clears your nonce and gets you out of the pending state so you can update the blockchain.
 
 - **Anything else?** Inspect webpage and go to console to see specific error message. Google and debug.
 
