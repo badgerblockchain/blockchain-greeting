@@ -1,20 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
-import { ethers } from 'ethers';
-import {Helmet} from "react-helmet";
+import { useEffect, useRef, useState } from 'react';  // able to use react elements in page
+import { ethers } from 'ethers';                      // ethersjs library. Connectivity to web3: https://docs.ethers.org/v5/
+import {Helmet} from "react-helmet";                  // badgver image shown in tab
 import MetaMaskOnboarding from '@metamask/onboarding'; // only executes if user doesn't have metamask install; add to package json
-// TODO did not add: to README dependenciesnpm install @metamask/onboarding
 
-//import detectEthereumProvider from '@metamask/detect-provider' // LOOKING INTO SOMETHING -> npm i @metamask/detect-provider
+import './App.css'; // imports css styles - Here is how you change what the webpage looks like (color, front, style, etc)
 
-//const { NonceManager } = require("@ethersproject/experimental"); // experimental trying to elim the nonce err
-//import logo from './logo.svg';
-import './App.css'; // imports css styles
+import image from './badger_pic.png' // picture used in main webpage
 
-import image from './badger_pic.png'
+import Greeter from './artifacts/contracts/Greeter.sol/Greeter.json'  // import the ABI code from this path
 
-import Greeter from './artifacts/contracts/Greeter.sol/Greeter.json'
-
-const greeterAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+const greeterAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"   // reference to the deployed contract for local node it will be this address.
+                                                                      // if you deploy to a testnet you will get a new address after the contract is 
+                                                                      // deployed so it will need to be updated
 
 function App() {
 
@@ -50,14 +47,10 @@ function App() {
         onboarding.startOnboarding();
       }
       else{ // connects user wallet
-        // const provider = await detectEthereumProvider()
-       // alert(provider)
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         console.log("user account: " + accounts) // used in debugging
         alert("User's account " + accounts + " is connected")
       }
-      // Will open the MetaMask UI
-      // You should disable this button while the request is pending!
       
     } catch (error) {
       console.error(error);
@@ -68,11 +61,15 @@ function App() {
   async function fetchGreeting(){
     if (typeof window.ethereum !== 'undefined') {                               // line that checks if the user has Metamask installed; not bad to have double check
       const provider = new ethers.providers.Web3Provider(window.ethereum)       // step in obtaining contract var which can call the Greeter.sol methods
-      const contract = new ethers.Contract(greeterAddress, Greeter.abi, provider)
-      try {
-        const data = await contract.greet()     // obtain current set Greeting
-        alert(data)
+      
+      // since we are not changing the state of the blockchain we do not need a signer
+      // SEE Providers and Signers in API reference for ethers.js: https://docs.ethers.org/v5/api/
 
+      const contract = new ethers.Contract(greeterAddress, Greeter.abi, provider) // get contract object
+
+      try {
+        const data = await contract.greet()     // obtain current set Greeting -> calls the function in Greeter.sol!
+        alert(data)
         console.log('data: ', data)             // print out set Greeting
       } catch (err) {
         console.log("Error: ", err)
@@ -89,14 +86,11 @@ function App() {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner()                                     // signs
 
-      // nonce = new NonceManager(signer) // trying to get rid of nonce error
-      // nonce.setTransction("0x01")
-
       const contract = new ethers.Contract(greeterAddress, Greeter.abi, signer) // notice how it is "signer" for a change on the blockchain
-      const transaction = await contract.setGreeting(greeting)                  // uses gas
+      const transaction = await contract.setGreeting(greeting)                  // calls Contract.sol setGreeting method and uses gas
+
       setGreetingValue('')
       await transaction.wait()        // wait for the transaction to be confirmed on the blockchain; in a prod env this might take a while
-
     }
   }
 

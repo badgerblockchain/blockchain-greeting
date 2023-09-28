@@ -30,8 +30,7 @@ npm install
 
 Before you can start your local blockchain you must download the [Metamask extension](https://metamask.io/) for your default browser.
 After getting Metamask on your browser you need to enable test networks. Go to settings and click on the advanced tab. There is an option to show
-test networks, and make sure this is enabled. You can switch networks by clicking in the "Ethereum Mainet" dropdown. For this project since you will be running the
-Ethereum Virtual Machine (EVM) locally, select the network called local 8545. Now your wallet is ready to be connected!
+test networks, and make sure this is enabled. You can switch networks by clicking in the "Ethereum Mainet" dropdown. For this project since you will be running the Ethereum Virtual Machine (EVM) locally, select the network called local 8545. Before you select the network though you must start the local nodes. Now your wallet is ready to be connected!
 
 I recommend to create a new account to perform the transactions on, especially if you have funds in your main account. You can easily add new accounts to your wallet by clicking the
 "import account" button. This will be referenced more below.
@@ -44,7 +43,7 @@ To start your local EVM machine (HardHat network) you must type the cmd:
 npx hardhat node
 ```
 
-After this command is execeuted, your computer will be running its own Ethereum node. In order to see balances of these nodes in your local testnet Metamask wallet you must do the following:
+After this command is execeuted, your computer will be running its own Ethereum node. In brower on Metamask you can now switch to local host 8545. In order to see balances of these nodes in your local testnet Metamask wallet you must do the following:
 
 - Copy a private key from one of the accounts that is displayed in the cli after starting your EVM
 - In Metamask, after clicking "Import Account" there will be a field asking for a private key. Paste your key here. This is the wallet where you funds will be added. Use this account to perform transactions.
@@ -75,9 +74,10 @@ Congratulations! Your first web3 site is active!
 
 ## Known Errors
 
-The starting logic for the code is found /frontend/src/App.js starting with the return function. Start to debug here. I will continue to add documentation as I learn more. Any suggestions? I am here for them.
+The starting logic for the code is found /frontend/src/App.js starting with the return function. Start to debug here. I will continue to add documentation as I learn more. Any suggestions?
 
 - **NONCE ERROR??** Try resetting your Metamask account. The error occurs because your transaction is stuck on pending. Ethereum is built to wait for your transaction to be mined to prevent mailicious activity. Resetting your Metamask account clears your nonce and gets you out of the pending state so you can update the blockchain.
+
 
 - **Anything else?** Inspect webpage and go to console to see specific error message. Google and debug.
 
@@ -88,3 +88,10 @@ Contact jpgundrum@wisc.edu if you run into errors/find issues with the code or i
 I am not responsible for the majority of this code! The blog post by Nader Dabit which is found [here](https://dev.to/dabit3/the-complete-guide-to-full-stack-ethereum-development-3j13)
 heavily inspried me. It is a well thought out tutorial. I recommend to read and watch his youtube video on the topic. Listening to him talk through the steps and give explanations is crucial for comphrension. [His repository](https://github.com/dabit3/full-stack-ethereum) was what I pulled down originally, to understand and eventually replicate his creation. I did use CSS and other React elements
 to make it more of my own, so it doesn't look like a direct copy and paste. This is meant for education purposes to get college students exposed to blockchain technology.
+
+
+
+
+TO ADD
+npm i react-helmet
+npm install @metamask/onboarding
