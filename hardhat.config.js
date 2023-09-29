@@ -22,8 +22,12 @@ module.exports = {
     artifacts: "./src/artifacts",
   },
   networks: {
-    hardhat: {
+    hardhat: { // used to connect localhost hardhat node to metamask
       chainId: 1337,
     },
+    goerli: {
+      url: 'REPLACE WITH ALCHEMY URL KEY',
+      accounts: ['REPLACE WITH METAMASK PRIVATE KEY'] // DD NOT UPLOAD WITH PRIVATE KEY better to use env vars
+    }
   },
 };

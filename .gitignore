@@ -1,3 +1,7 @@
 # auto generated folders
 node_modules
 cache
+
+*.json
+
+src/
