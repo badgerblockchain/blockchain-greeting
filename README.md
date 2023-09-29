@@ -6,7 +6,7 @@ This is a simple project I created for [Badger Blockchain](https://www.badgerblo
 
 Follow the links for instructions to install if you don't have the project requirements installed on your machine.
 
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) v.18.18
 - Optional, but helpful: [git ssh](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/GitHub-SSH-Key-Setup-Config-Ubuntu-Linux)
 
 ## Dependencies
@@ -88,10 +88,3 @@ Contact jpgundrum@wisc.edu if you run into errors/find issues with the code or i
 I am not responsible for the majority of this code! The blog post by Nader Dabit which is found [here](https://dev.to/dabit3/the-complete-guide-to-full-stack-ethereum-development-3j13)
 heavily inspried me. It is a well thought out tutorial. I recommend to read and watch his youtube video on the topic. Listening to him talk through the steps and give explanations is crucial for comphrension. [His repository](https://github.com/dabit3/full-stack-ethereum) was what I pulled down originally, to understand and eventually replicate his creation. I did use CSS and other React elements
 to make it more of my own, so it doesn't look like a direct copy and paste. This is meant for education purposes to get college students exposed to blockchain technology.
-
-
-
-
-TO ADD
-npm i react-helmet
-npm install @metamask/onboarding
